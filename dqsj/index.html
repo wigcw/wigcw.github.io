@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time</title>
+    <script>
+        function startTime() {
+            var today = new Date();
+            var ss = today.getSeconds();
+            ss = checkTime(ss);
+            var MM = today.getMinutes();
+            MM = checkTime(MM);
+            var hh = today.getHours();
+            hh = checkTime(hh);
+            var year = today.getFullYear();
+            var month = today.getMonth();
+            month++;
+            month = checkTime(month);
+            var day = today.getDate();
+            day = checkTime(day);
+            var weekday = today.getDay();
+            weekday = getweekday(weekday);
+            document.getElementById("time").innerHTML = year + "年" + month + "月" + day + "日" + "  " + "星期" + weekday + "  " + hh + ":" + MM + ":" + ss;
+            t=setTimeout('startTime()',1000);
+        }
+        function checkTime(i) {
+            if(i <10){
+                i = "0" + i;
+            }
+            return i;
+        }
+        function getweekday(i) {
+            switch (i){
+                case 1:
+                    i = "一";
+                break;
+                case 2:
+                    i = "二";
+                    break;
+                case 3:
+                    i = "三";
+                    break;
+                case 4:
+                    i = "四";
+                    break;
+                case 5:
+                    i = "五";
+                    break;
+                case 6:
+                    i = "六";
+                    break;
+                case 0:
+                    i = "天";
+                    break;
+            }
+            return i;
+        }
+    </script>
+</head>
+<body onload="startTime()">
+<span id="time"></span>
+</body>
+</html>
